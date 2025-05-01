@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página de Ventas</title>
+    <style>
+        /* Estilos básicos para una página de ventas atractiva */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Secciones principales */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Sección de producto destacado */
+        .producto-destacado {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .producto-destacado {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        
+        .producto-imagen {
+            flex: 1;
+            min-height: 300px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #6c757d;
+        }
+        
+        .producto-info {
+            flex: 1;
+        }
+        
+        .producto-info h2 {
+            margin-bottom: 1rem;
+            color: #2575fc;
+        }
+        
+        .producto-info ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .producto-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .precio {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #343a40;
+            margin: 1.5rem 0;
+        }
+        
+        .boton-comprar {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .boton-comprar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0,0,0,0.2);
+        }
+        
+        /* Sección de beneficios */
+        .beneficios {
+            margin: 3rem 0;
+        }
+        
+        .beneficios h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #343a40;
+        }
+        
+        .beneficios-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .beneficio-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .beneficio-item h3 {
+            margin: 1rem 0;
+            color: #2575fc;
+        }
+        
+        /* Sección de testimonios */
+        .testimonios {
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .testimonios h2 {
+            margin-bottom: 2rem;
+            color: #343a40;
+        }
+        
+        .testimonio {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .testimonio p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonio .cliente {
+            font-weight: bold;
+            color: #2575fc;
+        }
+        
+        /* Sección CTA final */
+        .cta-final {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .cta-final h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .cta-final p {
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>Producto Revolucionario</h1>
+        <p>Descubre cómo nuestro increíble producto puede cambiar tu vida y solucionar tus problemas de manera efectiva.</p>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de producto destacado -->
+        <section class="container">
+            <div class="producto-destacado">
+                <div class="producto-imagen">
+                    [Imagen del Producto]
+                </div>
+                <div class="producto-info">
+                    <h2>Características Principales</h2>
+                    <ul>
+                        <li><strong>Característica 1:</strong> Descripción detallada explicando cómo esta característica resuelve un problema específico.</li>
+                        <li><strong>Característica 2:</strong> Otra descripción convincente sobre por qué esta función es importante y cómo beneficia al usuario.</li>
+                        <li><strong>Característica 3:</strong> Explicación de una tercera característica clave que diferencia este producto de la competencia.</li>
+                        <li><strong>Característica 4:</strong> Característica adicional que refuerza el valor del producto y justifica su precio.</li>
+                    </ul>
+                    <div class="precio">$99.99</div>
+                    <a href="#" class="boton-comprar">¡Comprar Ahora!</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de beneficios -->
+        <section class="beneficios container">
+            <h2>Por qué elegir nuestro producto</h2>
+            <div class="beneficios-lista">
+                <div class="beneficio-item">
+                    <h3>Ahorro de Tiempo</h3>
+                    <p>Automatiza procesos que antes te tomaban horas, permitiéndote enfocarte en lo que realmente importa.</p>
+                </div>
+                <div class="beneficio-item">
+                    <h3>Fácil de Usar</h3>
+                    <p>Interfaz intuitiva diseñada para que cualquier persona pueda aprovechar todas sus funciones sin complicaciones.</p>
+                </div>
+                <div class="beneficio-item">
+                    <h3>Soporte Premium</h3>
+                    <p>Nuestro equipo de atención al cliente está disponible 24/7 para resolver cualquier duda que puedas tener.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de testimonios -->
+        <section class="testimonios container">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonio">
+                <p>"Este producto ha transformado completamente mi forma de trabajar. En solo una semana, he aumentado mi productividad en un 200%. No puedo imaginar mi día a día sin él."</p>
+                <div class="cliente">- María González, Diseñadora Gráfica</div>
+            </div>
+        </section>
+        
+        <!-- Llamada a la acción final -->
+        <section class="cta-final">
+            <h2>¿Listo para transformar tu vida?</h2>
+            <p>No esperes más para experimentar todos los beneficios que nuestro producto puede ofrecerte. Únete a miles de clientes satisfechos que ya han dado el paso.</p>
+            <a href="#" class="boton-comprar">¡Aprovecha la Oferta Ahora!</a>
+        </section>
+    </main>
+    
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Tu Empresa. Todos los derechos reservados.</p>
+        <p>Contacto: info@tuempresa.com | Tel: (123) 456-7890</p>
+    </footer>
+</body>
+</html>
