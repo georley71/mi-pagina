@@ -1,284 +1,1454 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página de Ventas</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso Faceless: Creación de Contenido con IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#f97316" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
     <style>
-        /* Estilos básicos para una página de ventas atractiva */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        
-        /* Encabezado */
-        header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Secciones principales */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        /* Sección de producto destacado */
-        .producto-destacado {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin: 3rem 0;
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        @media (min-width: 768px) {
-            .producto-destacado {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-        
-        .producto-imagen {
-            flex: 1;
-            min-height: 300px;
-            background-color: #e9ecef;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #6c757d;
-        }
-        
-        .producto-info {
-            flex: 1;
-        }
-        
-        .producto-info h2 {
-            margin-bottom: 1rem;
-            color: #2575fc;
-        }
-        
-        .producto-info ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .producto-info li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .precio {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #343a40;
-            margin: 1.5rem 0;
-        }
-        
-        .boton-comprar {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .boton-comprar:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0,0,0,0.2);
-        }
-        
-        /* Sección de beneficios */
-        .beneficios {
-            margin: 3rem 0;
-        }
-        
-        .beneficios h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #343a40;
-        }
-        
-        .beneficios-lista {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .beneficio-item {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        
-        .beneficio-item h3 {
-            margin: 1rem 0;
-            color: #2575fc;
-        }
-        
-        /* Sección de testimonios */
-        .testimonios {
-            margin: 3rem 0;
-            text-align: center;
-        }
-        
-        .testimonios h2 {
-            margin-bottom: 2rem;
-            color: #343a40;
-        }
-        
-        .testimonio {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-        
-        .testimonio p {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonio .cliente {
-            font-weight: bold;
-            color: #2575fc;
-        }
-        
-        /* Sección CTA final */
-        .cta-final {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        
-        .cta-final h2 {
-            margin-bottom: 1rem;
-        }
-        
-        .cta-final p {
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Pie de página */
-        footer {
-            background-color: #343a40;
-            color: #f8f9fa;
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-        
-        footer p {
-            margin: 0.5rem 0;
-        }
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: #f9fafb;
+      }
+      .hero-gradient {
+          background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+      }
+      .progress-bar {
+          height: 6px;
+          border-radius: 3px;
+          background-color: #e5e7eb;
+          overflow: hidden;
+      }
+      .progress {
+          height: 100%;
+          border-radius: 3px;
+      }
+      input[type="checkbox"] {
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 2px solid #d1d5db;
+          border-radius: 4px;
+          position: relative;
+          cursor: pointer;
+      }
+      input[type="checkbox"]:checked {
+          background-color: #3b82f6;
+          border-color: #3b82f6;
+      }
+      input[type="checkbox"]:checked::after {
+          content: "";
+          position: absolute;
+          top: 3px;
+          left: 6px;
+          width: 6px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
     </style>
-</head>
-<body>
-    <!-- Encabezado -->
-    <header>
-        <h1>Producto Revolucionario</h1>
-        <p>Descubre cómo nuestro increíble producto puede cambiar tu vida y solucionar tus problemas de manera efectiva.</p>
+  </head>
+  <body>
+    <!-- Navegación -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <h1 class="text-2xl font-['Pacifico'] text-primary mr-8">logo</h1>
+          <nav class="hidden md:flex space-x-6">
+            <a
+              href="#modulos"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Módulos</a
+            >
+            <a
+              href="#herramientas"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Herramientas</a
+            >
+            <a
+              href="#ejemplos"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Ejemplos</a
+            >
+            <a
+              href="#recursos"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Recursos</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="hidden md:block text-gray-700 hover:text-primary">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-search-line"></i>
+            </div>
+          </button>
+          <button
+            class="hidden md:flex items-center text-white bg-primary hover:bg-primary/90 px-4 py-2 !rounded-button whitespace-nowrap"
+          >
+            <span>Iniciar Sesión</span>
+          </button>
+          <button class="md:hidden text-gray-700">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-menu-line"></i>
+            </div>
+          </button>
+        </div>
+      </div>
     </header>
-    
-    <!-- Contenido principal -->
-    <main>
-        <!-- Sección de producto destacado -->
-        <section class="container">
-            <div class="producto-destacado">
-                <div class="<img src="https://raw.githubusercontent.com/georley71/mi-pagina/f587b8929fa36c04eb430b11f235cb68be5ad624/isotipo-george-leines.webp" alt="Mi Producto" style="max-width: 100%;">">
-                    [Imagen del Producto]
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+      <div
+        style="background-image: url('https://public.readdy.ai/ai/img_res/dd1a3eee0232f7dd5d5d169782cf6f40.jpg');"
+        class="absolute inset-0 bg-cover bg-center"
+      ></div>
+      <div class="relative w-full min-h-[600px] flex items-center">
+        <div class="container mx-auto px-4 py-16">
+          <div class="hero-gradient max-w-2xl p-10 rounded-xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Curso Faceless: Creación de Contenido con IA
+            </h1>
+            <p class="text-lg text-gray-700 mb-8">
+              Domina el arte de crear contenido viral sin mostrar tu rostro
+              utilizando las herramientas de inteligencia artificial más
+              avanzadas del mercado.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button
+                class="bg-primary hover:bg-primary/90 text-white px-6 py-3 !rounded-button font-medium whitespace-nowrap"
+              >
+                Comenzar Ahora
+              </button>
+              <button
+                class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 px-6 py-3 !rounded-button font-medium whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-play-circle-line"></i>
                 </div>
-                <div class="producto-info">
-                    <h2>Características Principales</h2>
-                    <ul>
-                        <li><strong>Característica 1:</strong> Descripción detallada explicando cómo esta característica resuelve un problema específico.</li>
-                        <li><strong>Característica 2:</strong> Otra descripción convincente sobre por qué esta función es importante y cómo beneficia al usuario.</li>
-                        <li><strong>Característica 3:</strong> Explicación de una tercera característica clave que diferencia este producto de la competencia.</li>
-                        <li><strong>Característica 4:</strong> Característica adicional que refuerza el valor del producto y justifica su precio.</li>
-                    </ul>
-                    <div class="precio">$99.99</div>
-                    <a href="#" class="boton-comprar">¡Comprar Ahora!</a>
-                </div>
+                <span>Ver Demo</span>
+              </button>
             </div>
-        </section>
-        
-        <!-- Sección de beneficios -->
-        <section class="beneficios container">
-            <h2>Por qué elegir nuestro producto</h2>
-            <div class="beneficios-lista">
-                <div class="beneficio-item">
-                    <h3>Ahorro de Tiempo</h3>
-                    <p>Automatiza procesos que antes te tomaban horas, permitiéndote enfocarte en lo que realmente importa.</p>
-                </div>
-                <div class="beneficio-item">
-                    <h3>Fácil de Usar</h3>
-                    <p>Interfaz intuitiva diseñada para que cualquier persona pueda aprovechar todas sus funciones sin complicaciones.</p>
-                </div>
-                <div class="beneficio-item">
-                    <h3>Soporte Premium</h3>
-                    <p>Nuestro equipo de atención al cliente está disponible 24/7 para resolver cualquier duda que puedas tener.</p>
-                </div>
+            <div class="mt-8 flex items-center gap-2">
+              <div class="flex -space-x-2">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/3a00909c55de0b3ae2b39d995e7b4c7d.jpg"
+                  alt="Usuario"
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover object-top"
+                />
+                <img
+                  src="https://public.readdy.ai/ai/img_res/288959a4177cdc52b263b07a6ea43f72.jpg"
+                  alt="Usuario"
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover object-top"
+                />
+                <img
+                  src="https://public.readdy.ai/ai/img_res/1ea95fe64bc341c426a7575d06693371.jpg"
+                  alt="Usuario"
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover object-top"
+                />
+              </div>
+              <p class="text-sm text-gray-600">
+                Más de <span class="font-bold">2,500 estudiantes</span> ya están
+                creando contenido exitoso
+              </p>
             </div>
-        </section>
-        
-        <!-- Sección de testimonios -->
-        <section class="testimonios container">
-            <h2>Lo que dicen nuestros clientes</h2>
-            <div class="testimonio">
-                <p>"Este producto ha transformado completamente mi forma de trabajar. En solo una semana, he aumentado mi productividad en un 200%. No puedo imaginar mi día a día sin él."</p>
-                <div class="cliente">- María González, Diseñadora Gráfica</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="bg-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary mb-2">+15.000</div>
+            <p class="text-gray-600">Minutos de contenido formativo</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary mb-2">98%</div>
+            <p class="text-gray-600">Tasa de satisfacción de estudiantes</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary mb-2">+30</div>
+            <p class="text-gray-600">Herramientas de IA incluidas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulos de Aprendizaje -->
+    <section id="modulos" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Módulos de Aprendizaje
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Nuestro curso está estructurado en módulos progresivos que te
+            llevarán desde los conceptos básicos hasta técnicas avanzadas de
+            creación de contenido.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Módulo 1 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Básico</span
+                >
+                <span class="text-gray-500 text-sm">3 horas</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Fundamentos del Contenido Faceless
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Aprende los principios básicos de la creación de contenido sin
+                mostrar tu rostro y las ventajas que ofrece.
+              </p>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-600">Progreso</span>
+                  <span class="text-primary font-medium">100%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress bg-primary" style="width: 100%"></div>
+                </div>
+              </div>
+              <button
+                class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 !rounded-button whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-check-line text-primary"></i>
+                </div>
+                <span>Completado</span>
+              </button>
             </div>
-        </section>
-        
-        <!-- Llamada a la acción final -->
-        <section class="cta-final">
-            <h2>¿Listo para transformar tu vida?</h2>
-            <p>No esperes más para experimentar todos los beneficios que nuestro producto puede ofrecerte. Únete a miles de clientes satisfechos que ya han dado el paso.</p>
-            <a href="#" class="boton-comprar">¡Aprovecha la Oferta Ahora!</a>
-        </section>
-    </main>
-    
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2025 Tu Empresa. Todos los derechos reservados.</p>
-        <p>Contacto: info@tuempresa.com | Tel: (123) 456-7890</p>
+          </div>
+
+          <!-- Módulo 2 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Intermedio</span
+                >
+                <span class="text-gray-500 text-sm">4 horas</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Herramientas de IA para Generación de Voz
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Domina las mejores herramientas de síntesis de voz para crear
+                narraciones profesionales para tus videos.
+              </p>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-600">Progreso</span>
+                  <span class="text-primary font-medium">65%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress bg-primary" style="width: 65%"></div>
+                </div>
+              </div>
+              <button
+                class="w-full bg-primary hover:bg-primary/90 text-white py-2 !rounded-button whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-play-line"></i>
+                </div>
+                <span>Continuar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Módulo 3 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Intermedio</span
+                >
+                <span class="text-gray-500 text-sm">5 horas</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Creación de Guiones con IA
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Aprende a utilizar ChatGPT y otras herramientas para crear
+                guiones atractivos y virales.
+              </p>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-600">Progreso</span>
+                  <span class="text-gray-500 font-medium">0%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress bg-primary" style="width: 0%"></div>
+                </div>
+              </div>
+              <button
+                class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 !rounded-button whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-lock-line"></i>
+                </div>
+                <span>Bloqueado</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Módulo 4 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Avanzado</span
+                >
+                <span class="text-gray-500 text-sm">6 horas</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Generación de Imágenes con Stable Diffusion
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Crea imágenes impactantes para tus videos utilizando las
+                técnicas más avanzadas de prompt engineering.
+              </p>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-600">Progreso</span>
+                  <span class="text-gray-500 font-medium">0%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress bg-primary" style="width: 0%"></div>
+                </div>
+              </div>
+              <button
+                class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 !rounded-button whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-lock-line"></i>
+                </div>
+                <span>Bloqueado</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Módulo 5 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Avanzado</span
+                >
+                <span class="text-gray-500 text-sm">4 horas</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Edición Automatizada de Videos
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Descubre cómo utilizar herramientas de edición automatizada para
+                crear videos de alta calidad en minutos.
+              </p>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-600">Progreso</span>
+                  <span class="text-gray-500 font-medium">0%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress bg-primary" style="width: 0%"></div>
+                </div>
+              </div>
+              <button
+                class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 !rounded-button whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-lock-line"></i>
+                </div>
+                <span>Bloqueado</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Módulo 6 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Experto</span
+                >
+                <span class="text-gray-500 text-sm">8 horas</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Monetización de Contenido Faceless
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Estrategias avanzadas para monetizar tu contenido a través de
+                diferentes plataformas y modelos de negocio.
+              </p>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-600">Progreso</span>
+                  <span class="text-gray-500 font-medium">0%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress bg-primary" style="width: 0%"></div>
+                </div>
+              </div>
+              <button
+                class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 !rounded-button whitespace-nowrap flex items-center justify-center gap-2"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-lock-line"></i>
+                </div>
+                <span>Bloqueado</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Herramientas de IA -->
+    <section id="herramientas" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Herramientas de IA Incluidas
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Accede a las mejores herramientas de inteligencia artificial para
+            potenciar tu creación de contenido sin mostrar tu rostro.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Herramienta 1 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-voice-recognition-line text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">ElevenLabs</h3>
+            <p class="text-gray-600 mb-4">
+              Generador de voces realistas con control de entonación y emoción
+              para tus narraciones.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Dificultad: Media</span>
+              <button
+                class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Explorar</span>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Herramienta 2 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-chat-3-line text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">ChatGPT</h3>
+            <p class="text-gray-600 mb-4">
+              Asistente de escritura para crear guiones, descripciones y títulos
+              optimizados para algoritmos.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Dificultad: Baja</span>
+              <button
+                class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Explorar</span>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Herramienta 3 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-image-line text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">
+              Stable Diffusion
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Generador de imágenes de alta calidad para crear visuales únicos
+              para tus videos.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Dificultad: Alta</span>
+              <button
+                class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Explorar</span>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Herramienta 4 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-scissors-cut-line text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Runway</h3>
+            <p class="text-gray-600 mb-4">
+              Plataforma de edición de video con IA para efectos especiales y
+              generación de contenido.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Dificultad: Media</span>
+              <button
+                class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Explorar</span>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Herramienta 5 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-music-line text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">AIVA</h3>
+            <p class="text-gray-600 mb-4">
+              Compositor musical con IA para crear bandas sonoras originales
+              libres de derechos.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Dificultad: Media</span>
+              <button
+                class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Explorar</span>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Herramienta 6 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-movie-line text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Synthesia</h3>
+            <p class="text-gray-600 mb-4">
+              Creador de videos con avatares virtuales para presentaciones
+              profesionales.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Dificultad: Baja</span>
+              <button
+                class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Explorar</span>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <button
+            class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 px-6 py-3 !rounded-button font-medium whitespace-nowrap flex items-center justify-center gap-2 mx-auto"
+          >
+            <span>Ver todas las herramientas</span>
+            <div class="w-5 h-5 flex items-center justify-center">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplos Prácticos -->
+    <section id="ejemplos" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Ejemplos Prácticos
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Descubre cómo nuestros estudiantes están creando contenido viral
+            utilizando las técnicas y herramientas del curso.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <!-- Ejemplo 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative pb-[56.25%]">
+              <img
+                src="https://public.readdy.ai/ai/img_res/ef885c0eb6ef488a9976f8f93d64a188.jpg"
+                alt="Ejemplo de video"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+              >
+                <button
+                  class="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center"
+                >
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-play-fill text-3xl"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Finanzas</span
+                >
+                <span class="text-gray-500 text-sm">2.4M visualizaciones</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                5 Inversiones Seguras para 2025
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Video creado con ChatGPT para el guión, ElevenLabs para la
+                narración y Stable Diffusion para las imágenes.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-red-500"
+                  >
+                    <i class="ri-youtube-fill"></i>
+                  </div>
+                  <span class="text-sm text-gray-500"
+                    >Canal: InversionesIA</span
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver análisis completo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ejemplo 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative pb-[56.25%]">
+              <img
+                src="https://public.readdy.ai/ai/img_res/4acb3b45d22232224c41a51135eb218a.jpg"
+                alt="Ejemplo de video"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+              >
+                <button
+                  class="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center"
+                >
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-play-fill text-3xl"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Cocina</span
+                >
+                <span class="text-gray-500 text-sm">5.7M visualizaciones</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Receta Viral: Pasta Cremosa en 10 Minutos
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Video creado con Runway para la edición, música de AIVA y
+                narración generada con ElevenLabs.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-black"
+                  >
+                    <i class="ri-tiktok-fill"></i>
+                  </div>
+                  <span class="text-sm text-gray-500"
+                    >Perfil: RecetasFáciles</span
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver análisis completo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonios -->
+        <div class="bg-white rounded-lg shadow-md p-8">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+            Lo que dicen nuestros estudiantes
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonio 1 -->
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/d08b92848ef5282b5806564b7e30abb7.jpg"
+                  alt="Usuario"
+                  class="w-12 h-12 rounded-full object-cover object-top"
+                />
+                <div>
+                  <h4 class="font-medium text-gray-900">Carlos Mendoza</h4>
+                  <p class="text-sm text-gray-500">Madrid, España</p>
+                </div>
+              </div>
+              <p class="text-gray-600">
+                "Gracias a este curso he podido crear un canal de YouTube que
+                genera más de 2.000€ mensuales sin mostrar mi cara. Las
+                herramientas de IA son increíbles."
+              </p>
+              <div class="flex text-yellow-400 mt-4">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonio 2 -->
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/2b7c8c09686019b04938e797210136a6.jpg"
+                  alt="Usuario"
+                  class="w-12 h-12 rounded-full object-cover object-top"
+                />
+                <div>
+                  <h4 class="font-medium text-gray-900">Laura Fernández</h4>
+                  <p class="text-sm text-gray-500">Bogotá, Colombia</p>
+                </div>
+              </div>
+              <p class="text-gray-600">
+                "Increíble la calidad de las voces generadas con IA. Mis videos
+                en TikTok han alcanzado millones de reproducciones gracias a las
+                técnicas del curso."
+              </p>
+              <div class="flex text-yellow-400 mt-4">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonio 3 -->
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/378982e9596cf21fa86133996b88ab65.jpg"
+                  alt="Usuario"
+                  class="w-12 h-12 rounded-full object-cover object-top"
+                />
+                <div>
+                  <h4 class="font-medium text-gray-900">Miguel Ángel Pérez</h4>
+                  <p class="text-sm text-gray-500">Ciudad de México</p>
+                </div>
+              </div>
+              <p class="text-gray-600">
+                "Nunca pensé que podría generar ingresos pasivos con contenido
+                digital. Ahora tengo 3 canales diferentes y todos funcionan sin
+                mostrar mi rostro."
+              </p>
+              <div class="flex text-yellow-400 mt-4">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <i class="ri-star-half-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Multimedia -->
+    <section id="recursos" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Recursos Multimedia
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Accede a nuestra biblioteca completa de recursos para potenciar tu
+            creación de contenido faceless.
+          </p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="mb-8 flex flex-wrap gap-3 justify-center">
+          <button
+            class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap"
+          >
+            Todos
+          </button>
+          <button
+            class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap"
+          >
+            Plantillas
+          </button>
+          <button
+            class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap"
+          >
+            Tutoriales
+          </button>
+          <button
+            class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap"
+          >
+            Prompts
+          </button>
+          <button
+            class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap"
+          >
+            Música
+          </button>
+          <button
+            class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap"
+          >
+            Efectos
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Recurso 1 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div class="relative pb-[56.25%] bg-gray-100">
+              <img
+                src="https://public.readdy.ai/ai/img_res/26ecbe4d7c6c3846ef5f43c89dc09cac.jpg"
+                alt="Plantilla de edición"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-download-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Plantilla</span
+                >
+                <span class="text-gray-500 text-xs">2.3k descargas</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Pack de 10 Plantillas para DaVinci Resolve
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Plantillas optimizadas para videos faceless con transiciones,
+                textos animados y efectos profesionales.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="recurso1" />
+                  <label for="recurso1" class="text-sm text-gray-500"
+                    >Añadir a favoritos</label
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recurso 2 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div class="relative pb-[56.25%] bg-gray-100">
+              <img
+                src="https://public.readdy.ai/ai/img_res/0d3a058785b41c1e33fe81ca25c561a7.jpg"
+                alt="Tutorial de voz"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-play-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Tutorial</span
+                >
+                <span class="text-gray-500 text-xs">45 minutos</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Masterclass: Voces Realistas con ElevenLabs
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Aprende a crear voces indistinguibles de humanos reales con
+                control total de entonación y emoción.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="recurso2" />
+                  <label for="recurso2" class="text-sm text-gray-500"
+                    >Añadir a favoritos</label
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recurso 3 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div class="relative pb-[56.25%] bg-gray-100">
+              <img
+                src="https://public.readdy.ai/ai/img_res/e64ba4ad3b3c476b2306dcc827f99073.jpg"
+                alt="Guía de prompts"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-file-text-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Prompts</span
+                >
+                <span class="text-gray-500 text-xs">150+ prompts</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Biblioteca de Prompts para Stable Diffusion
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Colección de prompts optimizados para generar imágenes de alta
+                calidad para diferentes nichos.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="recurso3" />
+                  <label for="recurso3" class="text-sm text-gray-500"
+                    >Añadir a favoritos</label
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recurso 4 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div class="relative pb-[56.25%] bg-gray-100">
+              <img
+                src="https://public.readdy.ai/ai/img_res/ba17e28d03c3e9939820de91418c73e9.jpg"
+                alt="Biblioteca de música"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-music-2-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Música</span
+                >
+                <span class="text-gray-500 text-xs">200+ pistas</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Pack de Música Libre de Derechos
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Colección de pistas musicales organizadas por categorías y
+                emociones para tus videos.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="recurso4" />
+                  <label for="recurso4" class="text-sm text-gray-500"
+                    >Añadir a favoritos</label
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recurso 5 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div class="relative pb-[56.25%] bg-gray-100">
+              <img
+                src="https://public.readdy.ai/ai/img_res/d8b63fd2f13779fee4e3cd65e5634fd2.jpg"
+                alt="Efectos visuales"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-film-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Efectos</span
+                >
+                <span class="text-gray-500 text-xs">50+ efectos</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Pack de Efectos Visuales Premium
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Transiciones, overlays y efectos visuales para dar un toque
+                profesional a tus videos faceless.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="recurso5" />
+                  <label for="recurso5" class="text-sm text-gray-500"
+                    >Añadir a favoritos</label
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recurso 6 -->
+          <div
+            class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div class="relative pb-[56.25%] bg-gray-100">
+              <img
+                src="https://public.readdy.ai/ai/img_res/d263b18014f105a2db63afe5736446da.jpg"
+                alt="Plantilla de guiones"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-file-list-3-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full"
+                  >Plantilla</span
+                >
+                <span class="text-gray-500 text-xs">15 formatos</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Plantillas de Guiones Optimizados
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Estructuras de guiones probadas para diferentes nichos y
+                formatos de contenido viral.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="recurso6" />
+                  <label for="recurso6" class="text-sm text-gray-500"
+                    >Añadir a favoritos</label
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm whitespace-nowrap"
+                >
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <button
+            class="bg-primary hover:bg-primary/90 text-white px-6 py-3 !rounded-button font-medium whitespace-nowrap flex items-center justify-center gap-2 mx-auto"
+          >
+            <span>Explorar todos los recursos</span>
+            <div class="w-5 h-5 flex items-center justify-center">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6">
+            ¿Listo para crear contenido viral sin mostrar tu rostro?
+          </h2>
+          <p class="text-gray-300 mb-8">
+            Únete a más de 2,500 creadores que ya están generando ingresos con
+            contenido faceless utilizando las herramientas de IA más avanzadas.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              class="bg-primary hover:bg-primary/90 text-white px-8 py-4 !rounded-button font-medium whitespace-nowrap"
+            >
+              Inscribirme Ahora
+            </button>
+            <button
+              class="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 !rounded-button font-medium whitespace-nowrap"
+            >
+              Ver Planes
+            </button>
+          </div>
+          <p class="text-gray-400 mt-6 text-sm">
+            7 días de garantía de devolución. Acceso de por vida a todas las
+            actualizaciones.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h1 class="text-2xl font-['Pacifico'] text-white mb-4">logo</h1>
+            <p class="text-gray-400 mb-6">
+              Curso especializado en creación de contenido faceless con
+              inteligencia artificial.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <div class="w-6 h-6 flex items-center justify-center">
+                  <i class="ri-facebook-fill"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <div class="w-6 h-6 flex items-center justify-center">
+                  <i class="ri-instagram-fill"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <div class="w-6 h-6 flex items-center justify-center">
+                  <i class="ri-youtube-fill"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <div class="w-6 h-6 flex items-center justify-center">
+                  <i class="ri-tiktok-fill"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Inicio</a>
+              </li>
+              <li>
+                <a href="#modulos" class="text-gray-400 hover:text-white"
+                  >Módulos</a
+                >
+              </li>
+              <li>
+                <a href="#herramientas" class="text-gray-400 hover:text-white"
+                  >Herramientas</a
+                >
+              </li>
+              <li>
+                <a href="#ejemplos" class="text-gray-400 hover:text-white"
+                  >Ejemplos</a
+                >
+              </li>
+              <li>
+                <a href="#recursos" class="text-gray-400 hover:text-white"
+                  >Recursos</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Soporte</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Centro de Ayuda</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Comunidad</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Contacto</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Preguntas Frecuentes</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Tutoriales</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Suscríbete</h3>
+            <p class="text-gray-400 mb-4">
+              Recibe las últimas actualizaciones y consejos sobre creación de
+              contenido faceless.
+            </p>
+            <form class="flex flex-col gap-3">
+              <input
+                type="email"
+                placeholder="Tu correo electrónico"
+                class="bg-gray-700 border-none text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <button
+                type="submit"
+                class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button whitespace-nowrap"
+              >
+                Suscribirme
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2025 Curso Faceless. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-4 mt-4 md:mt-0">
+            <a href="#" class="text-gray-400 hover:text-white text-sm"
+              >Términos y Condiciones</a
+            >
+            <a href="#" class="text-gray-400 hover:text-white text-sm"
+              >Política de Privacidad</a
+            >
+            <a href="#" class="text-gray-400 hover:text-white text-sm"
+              >Cookies</a
+            >
+          </div>
+        </div>
+      </div>
     </footer>
-</body>
+
+    <script>
+      // Script para manejar la interacción con los checkboxes
+      document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+          const label = this.nextElementSibling;
+          if (this.checked) {
+            label.classList.add("text-primary");
+            label.classList.remove("text-gray-500");
+          } else {
+            label.classList.remove("text-primary");
+            label.classList.add("text-gray-500");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
